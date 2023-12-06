@@ -13,7 +13,7 @@ source:
 build:
   skip: true # [py<36]
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-build-isolation --no-deps -vv
   entry_points:
     - gdown = gdown.cli:main
 
