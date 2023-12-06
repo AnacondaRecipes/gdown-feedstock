@@ -11,7 +11,7 @@ source:
   sha256: 15ba108245126ded919f08cc24550403721c853870dc520e5036366504829cca
 
 build:
-  noarch: python
+  skip: true # [py<36]
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
   entry_points:
@@ -19,10 +19,10 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
   run:
-    - python >=3.6
+    - python
     - filelock
     - requests
     - six
