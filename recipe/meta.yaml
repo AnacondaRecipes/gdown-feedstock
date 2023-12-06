@@ -46,6 +46,8 @@ test:
 
 about:
   home: https://github.com/wkentaro/gdown
+  dev_url: https://github.com/wkentaro/gdown
+  doc_url: https://github.com/wkentaro/gdown/blob/main/README.md
   license: MIT
   license_family: MIT
   license_file: LICENSE
