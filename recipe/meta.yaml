@@ -6,8 +6,9 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 347f23769679aaf7efa73e5655270fcda8ca56be65eb84a4a21d143989541045
+  # Source on pypi is missing files required for tests.
+  url: https://github.com/wkentaro/{{name}}/archive/refs/tags/v{{version}}.tar.gz
+  sha256: 15ba108245126ded919f08cc24550403721c853870dc520e5036366504829cca
 
 build:
   noarch: python
