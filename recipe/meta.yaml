@@ -32,10 +32,17 @@ requirements:
     - beautifulsoup4
 
 test:
+  requires:
+    - pip
+    - pytest
+  source_files:
+    - tests
   imports:
     - gdown
   commands:
     - gdown --help
+    - pip check
+    - pytest tests
 
 about:
   home: https://github.com/wkentaro/gdown
