@@ -6,22 +6,24 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 347f23769679aaf7efa73e5655270fcda8ca56be65eb84a4a21d143989541045
+  # Source on pypi is missing files required for tests.
+  url: https://github.com/wkentaro/{{name}}/archive/refs/tags/v{{version}}.tar.gz
+  sha256: 15ba108245126ded919f08cc24550403721c853870dc520e5036366504829cca
 
 build:
-  noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-build-isolation --no-deps -vv
   entry_points:
     - gdown = gdown.cli:main
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
+    - setuptools
+    - wheel
   run:
-    - python >=3.6
+    - python
     - filelock
     - requests
     - six
@@ -29,13 +31,22 @@ requirements:
     - beautifulsoup4
 
 test:
+  requires:
+    - pip
+    - pytest
+  source_files:
+    - tests
   imports:
     - gdown
   commands:
     - gdown --help
+    - pip check
+    - pytest tests
 
 about:
   home: https://github.com/wkentaro/gdown
+  dev_url: https://github.com/wkentaro/gdown
+  doc_url: https://github.com/wkentaro/gdown/blob/main/README.md
   license: MIT
   license_family: MIT
   license_file: LICENSE
